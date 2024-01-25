@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16f91e44-d3bb-475c-b5be-6f8730b74aaf" name="Changes" comment="First Commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/Test/BingoCaller.java" afterDir="false" />
+    <list default="true" id="16f91e44-d3bb-475c-b5be-6f8730b74aaf" name="Changes" comment="mainmenu wip">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/ParseKeystrokes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/Test/BingoCaller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/Test/BingoCaller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/MainMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

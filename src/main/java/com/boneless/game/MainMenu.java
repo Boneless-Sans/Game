@@ -1,5 +1,6 @@
 package com.boneless.game;
 
+import com.boneless.Test.BingoCaller;
 import com.boneless.game.util.ScrollGridPanel;
 
 import javax.swing.*;
@@ -53,6 +54,14 @@ public class MainMenu extends JFrame{
         JPanel panel = new JPanel();
         panel.setBackground(Color.red);
         panel.setPreferredSize(new Dimension(100,100));
+
+        JButton button = new JButton();
+        button.setText("text");
+        button.addActionListener(e -> {
+            System.out.println(BingoCaller.makeCall());
+        });
+
+        panel.add(button);
         return panel;
     }
     private JPanel spacer(int size){
