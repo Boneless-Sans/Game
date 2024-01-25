@@ -14,12 +14,12 @@ public class Player extends JPanel {
     private final double ogMoveSpeed;
     //booleans
     private boolean isMoving;
-    private boolean debug;
+    private final boolean debug;
     //Strings
     // other elements
-    private JLabel playerIcon;
+    private final JLabel playerIcon;
     private Timer timer;
-    private JFrame frame;
+    private final JFrame frame;
     public Player(JFrame frame){
         this.debug = Game.getDebugState();
         this.frame = frame;

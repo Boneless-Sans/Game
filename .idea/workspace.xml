@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16f91e44-d3bb-475c-b5be-6f8730b74aaf" name="Changes" comment="First Commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/Print.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/ScrollGridPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/background_tile.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/Test/BingoCaller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/ParseKeystrokes.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,17 +55,17 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Game [:Launcher.main()].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Boneless/IdeaProjects/Game/src/main/resources/assets/textures"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Game [:Launcher.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Boneless/IdeaProjects/Game/src/main/resources/assets/textures&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Boneless\IdeaProjects\Game\src\main\resources\assets\textures" />
