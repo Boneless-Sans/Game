@@ -1,11 +1,19 @@
 package com.boneless.game;
 
+import java.util.Objects;
+
+import static com.boneless.game.util.Print.print;
+
 public class Launcher {
     public static void main(String[] args) {
         //run game
-        System.out.println("Launching Game!");
+        print("Launching!");
         String defaultArg = "run";
         String arg = (args != null && args.length > 0) ? args[0] : defaultArg;
-        new MainMenu(arg);
+        if(!Objects.equals(arg, "dev")){
+            new MainMenu(arg);
+        }else{
+            new Game(arg);
+        }
     }
 }

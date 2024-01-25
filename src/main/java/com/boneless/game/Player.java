@@ -16,8 +16,7 @@ public class Player extends JPanel {
     private boolean isMoving;
     private boolean debug;
     //Strings
-    private final String[] debugColors = {"\u001B[30m", "\u001B[31m","\u001B[32m","\u001B[33m","\u001B[34m","\u001B[35m","\u001B[36m","\u001B[37m"};
-    //other elements
+    // other elements
     private JLabel playerIcon;
     private Timer timer;
     private JFrame frame;

@@ -12,18 +12,15 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
+
+import static com.boneless.game.util.Print.*;
 
 public class Game extends JFrame implements KeyListener {
     private static boolean getDebugState;
     private boolean debug = false;
     private static boolean playerMoving;
     private boolean movementCooldown = false;
-    private final String[] debugColors = {"\u001B[37m", "\u001B[31m","\u001B[32m","\u001B[33m","\u001B[34m","\u001B[35m","\u001B[36m","\u001B[30m"};
-    //White - 0, Red - 1, Green - 2, Yellow - 3, Blue - 4, Purple - 5, Cyan - 6,Black - 7
     private final Player player = new Player(this);
     public Game(String inDebug){
         if(Objects.equals(inDebug, "dev")){
@@ -34,7 +31,7 @@ public class Game extends JFrame implements KeyListener {
     private void initUI(){
         getDebugState = debug;
         if(debug){
-            System.out.println(debugColors[2] + "Debugging Enabled!" + debugColors[7]);
+            printDebug("Debugging Enabled!");
         }
         addWindowListener(adapter());
         addKeyListener(this);
@@ -108,16 +105,16 @@ public class Game extends JFrame implements KeyListener {
             // Calculate next position based on direction
             switch (direction) {
                 case "up":
-                    nextY -= player.getMoveSpeed();
+                    nextY -= (int) player.getMoveSpeed();
                     break;
                 case "down":
-                    nextY += player.getMoveSpeed();
+                    nextY += (int) player.getMoveSpeed();
                     break;
                 case "left":
-                    nextX -= player.getMoveSpeed();
+                    nextX -= (int) player.getMoveSpeed();
                     break;
                 case "right":
-                    nextX += player.getMoveSpeed();
+                    nextX += (int) player.getMoveSpeed();
                     break;
             }
 
@@ -158,10 +155,6 @@ public class Game extends JFrame implements KeyListener {
         }else {
             return null;
         }
-    }
-
-    private void printError(String text){
-        System.out.println(debugColors[1] + text + debugColors[0]);
     }
     public static boolean getDebugState(){
         return getDebugState;

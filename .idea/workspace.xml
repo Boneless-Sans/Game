@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16f91e44-d3bb-475c-b5be-6f8730b74aaf" name="Changes" comment="First Commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/MainMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/JsonFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/ParseKeystrokes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/player.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/Print.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/ScrollGridPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/background_tile.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +25,21 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -54,10 +69,14 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Boneless/IdeaProjects/Game"
+    "last_opened_file_path": "C:/Users/Boneless/IdeaProjects/Game/src/main/resources/assets/textures"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Boneless\IdeaProjects\Game\src\main\resources\assets\textures" />
+      <recent name="C:\Users\Boneless\IdeaProjects\Game\src\main\java\com\boneless\game\util" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\sonic\IdeaProjects\Game\src\main\resources\assets\textures" />
       <recent name="C:\Users\Boneless\IdeaProjects\Game\src\main\resources\assets" />
@@ -67,7 +86,7 @@
       <recent name="com.boneless.game.util" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Run With Debugging">
+  <component name="RunManager" selected="Application.Run Normally">
     <configuration name="Run With Debugging" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.boneless.game.Launcher" />
       <module name="Game.main" />
@@ -76,10 +95,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Game [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Run Normally" />
       <item itemvalue="Application.Run With Debugging" />
+      <item itemvalue="Gradle.Game [jar]" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.Game [jar]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
