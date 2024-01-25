@@ -1,0 +1,11 @@
+{
+  "keybindings": {
+    "up": "w",
+    "down": "s",
+    "left": "a",
+    "right": "d",
+    "pause": "Esc",
+    "quit": "alt + f4",
+    "fullscreen": "alt + enter"
+  }
+}

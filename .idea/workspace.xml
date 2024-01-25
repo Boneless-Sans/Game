@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16f91e44-d3bb-475c-b5be-6f8730b74aaf" name="Changes" comment="First Commit">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/MainMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/JsonFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/ParseKeystrokes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/player.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Launcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,26 +40,34 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2bPxOoUiNKI161MBGnby6XL7ygZ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.Game [:Launcher.main()].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Boneless/IdeaProjects/Game"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sonic\IdeaProjects\Game\src\main\resources\assets\textures" />
       <recent name="C:\Users\Boneless\IdeaProjects\Game\src\main\resources\assets" />
       <recent name="C:\Users\Boneless\IdeaProjects\Game\src\main\resources\assets\sounds" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.boneless.game.util" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Run Normally">
+  <component name="RunManager" selected="Application.Run With Debugging">
     <configuration name="Run With Debugging" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.boneless.game.Launcher" />
       <module name="Game.main" />
@@ -66,6 +80,14 @@
       <item itemvalue="Application.Run Normally" />
       <item itemvalue="Application.Run With Debugging" />
     </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-corretto-17.0.9-f644763e9732-ebaef533" />
+        <option value="jdk-18.0.2-corretto-18.0.2-f644763e9732-da6bd485" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
