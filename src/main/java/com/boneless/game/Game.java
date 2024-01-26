@@ -13,7 +13,9 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import static com.boneless.game.util.Print.*;
 
@@ -32,9 +34,6 @@ public class Game extends JFrame implements KeyListener {
     }
     private void initUI(){
         getDebugState = debug;
-        if(debug){
-            printDebug("Debugging Enabled!");
-        }
         addWindowListener(adapter());
         addKeyListener(this);
         setSize(1200,900);
@@ -115,17 +114,34 @@ public class Game extends JFrame implements KeyListener {
             new Game("dev");
         }
     }
+    private final Set<String> pressedKeys = new HashSet<>();
     @Override
     public void keyPressed(KeyEvent e) {
-        switch (Objects.requireNonNull(getDirectionKey(e))) {
-            case "up" -> player.move("up");
-            case "down" -> player.move("down");
-            case "left" -> player.move("left");
-            case "right" -> player.move("right");
+        // Get the direction corresponding to the pressed key
+        String direction = getDirectionKey(e);
+
+        // Add the direction to the set of pressed keys
+        if (direction != null) {
+            pressedKeys.add(direction);
+
+            // Call the move method with the updated set of pressed keys
+            player.move(pressedKeys);
         }
     }
+
     @Override
-    public void keyReleased(KeyEvent e){}
+    public void keyReleased(KeyEvent e) {
+        // Get the direction corresponding to the released key
+        String direction = getDirectionKey(e);
+
+        // Remove the direction from the set of pressed keys
+        if (direction != null) {
+            pressedKeys.remove(direction);
+
+            // Call the move method with the updated set of pressed keys
+            player.move(pressedKeys);
+        }
+    }
     private String getDirectionKey(KeyEvent e){
         String upKey = parseKeyStrokeInput("up");
         String downKey = parseKeyStrokeInput("down");
@@ -148,5 +164,8 @@ public class Game extends JFrame implements KeyListener {
     }
     public static boolean playerMoving(){
         return playerMoving;
+    }
+    private void loadMap(String fileName){
+
     }
 }
