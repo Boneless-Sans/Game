@@ -55,6 +55,7 @@ public class Game extends JFrame implements KeyListener {
         Thread gameLoop = new Thread(() -> {
             while (true) {
                 updateTick(); // Update game state
+                checkCollision();
                 try {
                     Thread.sleep(16); // Adjust the sleep time based on your desired frame rate (here, roughly 60 fps)
                 } catch (InterruptedException e) {
@@ -66,6 +67,9 @@ public class Game extends JFrame implements KeyListener {
     }
     private void updateTick(){
         player.update();
+    }
+    private void checkCollision(){
+        if(player.getX() )
     }
     private JPanel gameBoard(){
         JPanel panel = new JPanel(null);

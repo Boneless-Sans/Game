@@ -105,7 +105,7 @@ public class Player extends JPanel {
     }
 
     private boolean isValidMove(int newX, int newY) {
-        return newX >= 0 && newX <= frame.getWidth() - getWidth() - 10 && newY >= 0 && newY <= frame.getHeight() - getHeight() - 29;
+        return newX >= 0 && newX <= frame.getWidth() - getWidth() - 10 && newY >= 0 && newY <= frame.getHeight() - getHeight() - 35;
     }
     private boolean isValidMoveX(int newX) {
         return newX >= 0 && newX <= frame.getWidth() - getWidth() - 10;

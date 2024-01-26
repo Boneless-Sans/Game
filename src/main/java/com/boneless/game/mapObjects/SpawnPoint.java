@@ -34,12 +34,12 @@ public class SpawnPoint extends JPanel {
         }else{
             int newXPos = switch(xPos){
                 case"l" -> 0;
-                case"r" -> frame.getWidth();
+                case"r" -> frame.getWidth() - sizeX - 10;
                 default -> Integer.parseInt(xPos);
             };
             int newYPos = switch(yPos){
                 case"t" -> 0;
-                case"b" -> frame.getHeight();
+                case"b" -> frame.getHeight() - sizeY - 35;
                 default -> Integer.parseInt(yPos);
             };
             setBounds(newXPos, newYPos, sizeX, sizeY);
