@@ -1,5 +1,6 @@
 package com.boneless.game;
 
+import com.boneless.game.mapObjects.SpawnPoint;
 import com.boneless.game.util.AudioPlayer;
 import com.boneless.game.util.JsonFile;
 import com.boneless.game.util.Print;
@@ -45,6 +46,8 @@ public class Game extends JFrame implements KeyListener {
         player = new Player(this);
         gameBoard.add(player);
         player.update();
+
+        gameBoard.add(new SpawnPoint("testmap.json", this, debug));
 
         setVisible(true);
     }

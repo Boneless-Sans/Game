@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16f91e44-d3bb-475c-b5be-6f8730b74aaf" name="Changes" comment="mainmenu wip">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/mapObjects/BlockField.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/mapObjects/Goal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/mapObjects/SpawnPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/menus/MapFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/menus/Settings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/mapLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/maps/level1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/maps/testmap.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/mapObjects/SpawnPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/mapObjects/SpawnPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/maps/testmap.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/maps/testmap.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
