@@ -2,6 +2,7 @@ package com.boneless.game;
 
 import com.boneless.game.util.AudioPlayer;
 import com.boneless.game.util.JsonFile;
+import com.boneless.game.util.Print;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -21,12 +22,13 @@ public class Game extends JFrame implements KeyListener {
     private boolean debug = false;
     private static boolean playerMoving;
     private boolean movementCooldown = false;
-    private final Player player = new Player(this);
+    private Player player;
     public Game(String inDebug){
         if(Objects.equals(inDebug, "dev")){
             this.debug = true;
         }
         initUI();
+        gameLoop();
     }
     private void initUI(){
         getDebugState = debug;
@@ -41,9 +43,27 @@ public class Game extends JFrame implements KeyListener {
 
         JPanel gameBoard = gameBoard();
         add(gameBoard);
+        player = new Player(this);
         gameBoard.add(player);
+        player.update();
 
         setVisible(true);
+    }
+    private void gameLoop(){
+        Thread gameLoop = new Thread(() -> {
+            while (true) {
+                updateTick(); // Update game state
+                try {
+                    Thread.sleep(16); // Adjust the sleep time based on your desired frame rate (here, roughly 60 fps)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        gameLoop.start();
+    }
+    private void updateTick(){
+        player.update();
     }
     private JPanel gameBoard(){
         JPanel panel = new JPanel(null);
@@ -89,56 +109,23 @@ public class Game extends JFrame implements KeyListener {
         if(String.valueOf(e.getKeyChar()).equals(parseKeyStrokeInput("pause"))){
             System.exit(0);
         }
-        if(e.getKeyChar() == 'r'){
+        if(e.getKeyChar() == 'r' && debug){
             dispose();
-            printError("RELOADING!");
+            printColor("blue","RELOADING!");
             new Game("dev");
         }
     }
     @Override
     public void keyPressed(KeyEvent e) {
-        String direction = getDirectionKey(e);
-        if (direction != null) {
-            int nextX = player.getX();
-            int nextY = player.getY();
-
-            // Calculate next position based on direction
-            switch (direction) {
-                case "up":
-                    nextY -= (int) player.getMoveSpeed();
-                    break;
-                case "down":
-                    nextY += (int) player.getMoveSpeed();
-                    break;
-                case "left":
-                    nextX -= (int) player.getMoveSpeed();
-                    break;
-                case "right":
-                    nextX += (int) player.getMoveSpeed();
-                    break;
-            }
-
-            // Check if next position is within bounds
-            if (nextX >= 0 && nextX <= getWidth() - player.getWidth() && nextY >= 0 && nextY <= getHeight() - player.getHeight()) {
-                player.move(direction);
-            } else {
-                // If next move would exceed boundaries, do nothing
-                if (debug) {
-                    printError("Next move would exceed boundaries!");
-                }
-            }
-        } else if (debug) {
-            printError("Somehow, direction is null");
+        switch (Objects.requireNonNull(getDirectionKey(e))) {
+            case "up" -> player.move("up");
+            case "down" -> player.move("down");
+            case "left" -> player.move("left");
+            case "right" -> player.move("right");
         }
     }
-
     @Override
-    public void keyReleased(KeyEvent e){
-        String direction = getDirectionKey(e);
-        if(direction != null){
-            player.stopMoving(direction);
-        }
-    }
+    public void keyReleased(KeyEvent e){}
     private String getDirectionKey(KeyEvent e){
         String upKey = parseKeyStrokeInput("up");
         String downKey = parseKeyStrokeInput("down");
@@ -153,7 +140,7 @@ public class Game extends JFrame implements KeyListener {
         }else if(String.valueOf(e.getKeyChar()).equals(rightKey)){
             return "right";
         }else {
-            return null;
+            return String.valueOf(e);
         }
     }
     public static boolean getDebugState(){

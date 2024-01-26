@@ -1,13 +1,11 @@
 package com.boneless.game.util;
 
 public class Print{
-    private static final String[] debugColors = {"\u001B[37m", "\u001B[31m","\u001B[32m","\u001B[33m","\u001B[34m","\u001B[35m","\u001B[36m","\u001B[30m"};
-    //White - 0, Red - 1, Green - 2, Yellow - 3, Blue - 4, Purple - 5, Cyan - 6,Black - 7
     public static void print(String text){
         System.out.println(text);
     }
     public static void printError(String text){
-        System.out.println(debugColors[1] + text + debugColors[0]);
+        System.out.println("\u001B[31m" + text +  "\u001b[37m");
     }
     public static void printDebug(String text){
         System.out.println(parseColor("green") + text + "\u001b[37m");

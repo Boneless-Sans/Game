@@ -1,5 +1,7 @@
 package com.boneless.game;
 
+import com.boneless.game.menus.MainMenu;
+
 import java.util.Objects;
 
 import static com.boneless.game.util.Print.print;
