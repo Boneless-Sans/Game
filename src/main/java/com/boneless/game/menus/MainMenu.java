@@ -11,6 +11,7 @@ import static com.boneless.game.util.Print.*;
 
 public class MainMenu extends JFrame{
     private boolean debug = false;
+    private String selectedMap;
     public MainMenu(String args){
         if(Objects.equals(args, "dev")){
             debug = true;
@@ -60,10 +61,10 @@ public class MainMenu extends JFrame{
         button.addActionListener(e -> {
             if(debug){
                 dispose();
-                new Game("dev");
+                new Game("dev", "testMap.json");
             }else{
                 dispose();
-                new Game(null);
+                new Game(null, selectedMap);
             }
         });
 

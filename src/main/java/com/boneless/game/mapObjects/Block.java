@@ -1,4 +1,4 @@
 package com.boneless.game.mapObjects;
 
-public class BlockField {
+public class Block {
 }

@@ -1,5 +1,8 @@
 package com.boneless.game;
 
+import com.boneless.game.mapObjects.Block;
+import com.boneless.game.mapObjects.Goal;
+import com.boneless.game.mapObjects.MapObject;
 import com.boneless.game.mapObjects.SpawnPoint;
 import com.boneless.game.util.AudioPlayer;
 import com.boneless.game.util.JsonFile;
@@ -14,9 +17,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+import java.util.List;
 
 import static com.boneless.game.util.Print.*;
 
@@ -24,12 +26,15 @@ public class Game extends JFrame implements KeyListener {
     private static boolean getDebugState;
     private boolean debug = false;
     private static boolean playerMoving;
-    private boolean movementCooldown = false;
+    private final boolean movementCooldown = false;
+    private final List<JComponent> mapObjects = new ArrayList<>();
+    private final String mapName;
     private Player player;
-    public Game(String inDebug){
+    public Game(String inDebug, String mapName){
         if(Objects.equals(inDebug, "dev")){
             this.debug = true;
         }
+        this.mapName = mapName;
         initUI();
         gameLoop();
     }
@@ -47,8 +52,10 @@ public class Game extends JFrame implements KeyListener {
         gameBoard.add(player);
         player.update();
 
-        gameBoard.add(new SpawnPoint("testmap.json", this, debug));
+        SpawnPoint point = new SpawnPoint(mapName, this, debug);
+        mapObjects.add(point);
 
+        gameBoard.add(point);
         setVisible(true);
     }
     private void gameLoop(){
@@ -69,8 +76,39 @@ public class Game extends JFrame implements KeyListener {
         player.update();
     }
     private void checkCollision(){
-        if(player.getX() )
+        for(JComponent component: mapObjects){
+            if(isColliding(component)){
+                handleCollision((MapObject) component);
+            }
+        }
     }
+    private boolean isColliding(JComponent component){
+        int playerX = player.getX();
+        int playerY = player.getY();
+        int playerWidth = player.getWidth();
+        int playerHeight = player.getHeight();
+
+        int objectX = component.getX();
+        int objectY = component.getY();
+        int objectWidth = component.getWidth();
+        int objectHeight = component.getHeight();
+
+        return playerX < objectX + objectWidth &&
+                playerX + playerWidth > objectX &&
+                playerY < objectY + objectHeight &&
+                playerY + playerHeight > objectY;
+    }
+    private void handleCollision(MapObject mapObject) {
+        if (mapObject instanceof Goal) {
+            ((Goal) mapObject).reachedGoal();
+        } else if (mapObject instanceof Block) {
+            ((Block) mapObject).playerCollided();
+        } else if (mapObject instanceof SpawnPoint) {
+            ((SpawnPoint) mapObject).playerCollided();
+        }
+        // Add more conditions as needed for other types of MapObject
+    }
+
     private JPanel gameBoard(){
         JPanel panel = new JPanel(null);
         //panel.setBackground(Color.red);
@@ -118,7 +156,7 @@ public class Game extends JFrame implements KeyListener {
         if(e.getKeyChar() == 'r' && debug){
             dispose();
             printColor("blue","RELOADING!");
-            new Game("dev");
+            new Game("dev", mapName);
         }
     }
     private final Set<String> pressedKeys = new HashSet<>();
