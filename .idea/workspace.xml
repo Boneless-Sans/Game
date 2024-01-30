@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16f91e44-d3bb-475c-b5be-6f8730b74aaf" name="Changes" comment="working on checking collision">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/mapObjects/MapObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Launcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/mapObjects/BlockField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/mapObjects/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/mapObjects/SpawnPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/mapObjects/SpawnPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/menus/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/menus/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/maps/testmap.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/maps/testMap.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/mapObjects/Block.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/mapObjects/Goal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/mapObjects/MapObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/MapObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/mapObjects/SpawnPoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/maps/testMap.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/maps/testMap.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

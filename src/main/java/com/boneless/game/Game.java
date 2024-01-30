@@ -1,12 +1,8 @@
 package com.boneless.game;
 
-import com.boneless.game.mapObjects.Block;
-import com.boneless.game.mapObjects.Goal;
-import com.boneless.game.mapObjects.MapObject;
-import com.boneless.game.mapObjects.SpawnPoint;
+import com.boneless.game.util.MapObject;
 import com.boneless.game.util.AudioPlayer;
 import com.boneless.game.util.JsonFile;
-import com.boneless.game.util.Print;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -25,11 +21,10 @@ import static com.boneless.game.util.Print.*;
 public class Game extends JFrame implements KeyListener {
     private static boolean getDebugState;
     private boolean debug = false;
-    private static boolean playerMoving;
-    private final boolean movementCooldown = false;
     private final List<JComponent> mapObjects = new ArrayList<>();
     private final String mapName;
     private Player player;
+
     public Game(String inDebug, String mapName){
         if(Objects.equals(inDebug, "dev")){
             this.debug = true;
@@ -44,20 +39,28 @@ public class Game extends JFrame implements KeyListener {
         addKeyListener(this);
         setSize(1200,900);
         setLocationRelativeTo(null);
-        //add(new MainMenu(this));
+        setResizable(false);
 
         JPanel gameBoard = gameBoard();
         add(gameBoard);
-        player = new Player(this);
+
+        MapObject.SpawnPoint point;
+        boolean doCustomMap = true;
+        if(doCustomMap) {
+            point = new MapObject.SpawnPoint(mapName, this, debug);
+        }else{
+            int mapCount = 0;
+            point = new MapObject.SpawnPoint("level" + mapCount, this, debug);
+        }
+
+        player = new Player(this, point);
         gameBoard.add(player);
         player.update();
-
-        SpawnPoint point = new SpawnPoint(mapName, this, debug);
-        mapObjects.add(point);
 
         gameBoard.add(point);
         setVisible(true);
     }
+    //Main game loop, for checking things at all times
     private void gameLoop(){
         Thread gameLoop = new Thread(() -> {
             while (true) {
@@ -99,14 +102,11 @@ public class Game extends JFrame implements KeyListener {
                 playerY + playerHeight > objectY;
     }
     private void handleCollision(MapObject mapObject) {
-        if (mapObject instanceof Goal) {
-            ((Goal) mapObject).reachedGoal();
-        } else if (mapObject instanceof Block) {
-            ((Block) mapObject).playerCollided();
-        } else if (mapObject instanceof SpawnPoint) {
-            ((SpawnPoint) mapObject).playerCollided();
+        if (mapObject instanceof MapObject.Goal) {
+            ((MapObject.Goal) mapObject).reachedGoal();
+        } else if (mapObject instanceof MapObject.Block) {
+            ((MapObject.Block) mapObject).playerCollided(player);
         }
-        // Add more conditions as needed for other types of MapObject
     }
 
     private JPanel gameBoard(){
@@ -207,8 +207,9 @@ public class Game extends JFrame implements KeyListener {
     public static boolean getDebugState(){
         return getDebugState;
     }
-    public static boolean playerMoving(){
-        return playerMoving;
+    private void unLoadMap(){
+        gameBoard().removeAll();
+        initUI();
     }
     private void loadMap(String fileName){
 

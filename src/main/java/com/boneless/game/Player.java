@@ -1,59 +1,56 @@
 package com.boneless.game;
 
 import com.boneless.game.util.IconResize;
-import com.boneless.game.util.JsonFile;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Set;
 
-import static com.boneless.game.util.Print.printError;
-
 public class Player extends JPanel {
-    //booleans
-    private final boolean debug;
-    // other elements
-    private final JLabel playerIcon;
+    private boolean isAlive = true;
     private final JFrame frame;
     //player values
-    private int health;
     private double velocityX = 0.0;
     private double velocityY = 0.0;
-    public Player(JFrame frame){
+    public Player(JFrame frame, JPanel spawnPanel){
         int playerWidth = 50;
         int playerHeight = 50;
-        this.debug = Game.getDebugState();
-        this.frame = frame;
-        setBounds((frame.getWidth() /2) - playerWidth, (frame.getHeight() /2) - playerHeight, playerWidth, playerHeight);
 
-        playerIcon = new JLabel();
+        this.frame = frame;
+        setBounds(spawnPanel.getX() + (playerWidth / 2), spawnPanel.getY() + (playerHeight / 2), playerWidth, playerHeight);
+
+        // other elements
+        JLabel playerIcon = new JLabel();
         playerIcon.setIcon(new IconResize("textures/player.png", playerWidth, playerHeight).getImage());
         setBackground(Color.black);
         add(playerIcon);
     }
-    private final double acceleration = 1; // Adjust acceleration rate as needed
-    private final double friction = 0.01; // Adjust friction coefficient as needed
-    private final double maxSpeed = 10.0; // Adjust maximum speed as needed
+
+    private final double friction = 0.025; // Adjust friction coefficient as needed
 
     public void move(Set<String> directions) {
         double accelerationX = 0.0;
         double accelerationY = 0.0;
 
         // Determine acceleration based on pressed directions
-        for (String direction : directions) {
-            switch (direction) {
-                case "up":
-                    accelerationY -= acceleration;
-                    break;
-                case "down":
-                    accelerationY += acceleration;
-                    break;
-                case "left":
-                    accelerationX -= acceleration;
-                    break;
-                case "right":
-                    accelerationX += acceleration;
-                    break;
+        if(isAlive) {
+            for (String direction : directions) {
+                // Adjust acceleration rate as needed
+                double acceleration = 1;
+                switch (direction) {
+                    case "up":
+                        accelerationY -= acceleration;
+                        break;
+                    case "down":
+                        accelerationY += acceleration;
+                        break;
+                    case "left":
+                        accelerationX -= acceleration;
+                        break;
+                    case "right":
+                        accelerationX += acceleration;
+                        break;
+                }
             }
         }
 
@@ -70,6 +67,8 @@ public class Player extends JPanel {
         }
 
         // Limit velocity to maximum speed
+        // Adjust maximum speed as needed
+        double maxSpeed = 10.0;
         velocityX = Math.min(Math.max(velocityX, -maxSpeed), maxSpeed);
         velocityY = Math.min(Math.max(velocityY, -maxSpeed), maxSpeed);
 
@@ -109,6 +108,9 @@ public class Player extends JPanel {
     }
     private boolean isValidMoveX(int newX) {
         return newX >= 0 && newX <= frame.getWidth() - getWidth() - 10;
+    }
+    public void setIsAlive(boolean isAlive){
+        this.isAlive = isAlive;
     }
     public String toString(){
         return "X: " + getX() + " Y: " +  getY() + " Width: " + getWidth() + " Height: " + getHeight();
