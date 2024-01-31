@@ -109,6 +109,9 @@ public class Player extends JPanel {
     private boolean isValidMoveX(int newX) {
         return newX >= 0 && newX <= frame.getWidth() - getWidth() - 10;
     }
+    public boolean isAlive(){
+        return isAlive;
+    }
     public void setIsAlive(boolean isAlive){
         this.isAlive = isAlive;
     }

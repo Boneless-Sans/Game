@@ -105,37 +105,49 @@ public class JsonFile {
 
         return "invalid key";
     }
-//    public static String[] readArray(String filename, String mainKey) {
-//        try (Reader reader = new FileReader(getFilePath(filename))) {
-//            JSONTokener tokener = new JSONTokener(reader);
-//            JSONObject jsonObject = new JSONObject(tokener);
-//
-//            if (jsonObject.has(mainKey)) {
-//                Object mainValue = jsonObject.get(mainKey);
-//
-//                if (mainValue instanceof JSONArray) {
-//                    JSONArray arrayValue = (JSONArray) mainValue;
-//                    int length = arrayValue.length();
-//                    String[] resultArray = new String[length];
-//
-//                    for (int i = 0; i < length; i++) {
-//                        resultArray[i] = arrayValue.getString(i);
-//                    }
-//
-//                    return resultArray;
-//                } else {
-//                    System.out.println("Invalid array type");
-//                }
-//            } else {
-//                System.out.println("Invalid mainKey");
-//            }
-//
-//        } catch (IOException | JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return null;
-//    }
+    public static String readWithFourKeys(String filename, String mainKey, String subKey, String blockKey, String valueKey) {
+        try (Reader reader = new FileReader(getFilePath(filename))) {
+            JSONTokener tokener = new JSONTokener(reader);
+            JSONObject jsonObject = new JSONObject(tokener);
+
+            if (jsonObject.has(mainKey)) {
+                JSONObject mainObject = jsonObject.getJSONObject(mainKey);
+
+                if (mainObject.has(subKey)) {
+                    JSONObject subObject = mainObject.getJSONObject(subKey);
+
+                    if (subObject.has(blockKey)) {
+                        JSONObject blockObject = subObject.getJSONObject(blockKey);
+
+                        if (blockObject.has(valueKey)) {
+                            Object value = blockObject.get(valueKey);
+
+                            if (value instanceof String) {
+                                return (String) value;
+                            } else {
+                                return "invalid value type";
+                            }
+                        } else {
+                            return "invalid valueKey";
+                        }
+                    } else {
+                        return "invalid blockKey";
+                    }
+                } else {
+                    return "invalid subKey";
+                }
+            } else {
+                return "-1"; // Return a sentinel value for invalid mainKey
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return "invalid key";
+    }
     public static String[][] read2DArray(String filename, String mainKey) {
         try (Reader reader = new FileReader(getFilePath(filename))) {
             JSONTokener tokener = new JSONTokener(reader);

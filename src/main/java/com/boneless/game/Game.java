@@ -21,14 +21,26 @@ import static com.boneless.game.util.Print.*;
 public class Game extends JFrame implements KeyListener {
     private static boolean getDebugState;
     private boolean debug = false;
+    private int mapNum;
     private final List<JComponent> mapObjects = new ArrayList<>();
     private final String mapName;
     private Player player;
+    private JPanel gameBoard;
 
+    public Game(String inDebug, int mapNum){
+        if(Objects.equals(inDebug, "dev")){
+            this.debug = true;
+        }
+        this.mapNum = mapNum;
+        mapName = "level" + mapNum;
+        initUI();
+        gameLoop();
+    }
     public Game(String inDebug, String mapName){
         if(Objects.equals(inDebug, "dev")){
             this.debug = true;
         }
+        doCustom
         this.mapName = mapName;
         initUI();
         gameLoop();
@@ -41,23 +53,25 @@ public class Game extends JFrame implements KeyListener {
         setLocationRelativeTo(null);
         setResizable(false);
 
-        JPanel gameBoard = gameBoard();
+        gameBoard = new JPanel(null);
         add(gameBoard);
 
         MapObject.SpawnPoint point;
-        boolean doCustomMap = true;
-        if(doCustomMap) {
-            point = new MapObject.SpawnPoint(mapName, this, debug);
-        }else{
-            int mapCount = 0;
-            point = new MapObject.SpawnPoint("level" + mapCount, this, debug);
-        }
+        MapObject.Goal goal;
+        gameBoard.add(new MapObject.Block(mapName, this, 1, debug));
+
+        point = doCustomMap ? new MapObject.SpawnPoint(mapName, this, debug) :
+                new MapObject.SpawnPoint("level" + mapNum, this, debug);
+        goal = doCustomMap ? new MapObject.Goal(mapName, this, debug) :
+                new MapObject.Goal("level" + mapNum, this, debug);
+        mapObjects.add(goal);
 
         player = new Player(this, point);
         gameBoard.add(player);
         player.update();
 
         gameBoard.add(point);
+        gameBoard.add(goal);
         setVisible(true);
     }
     //Main game loop, for checking things at all times
@@ -77,6 +91,9 @@ public class Game extends JFrame implements KeyListener {
     }
     private void updateTick(){
         player.update();
+        if(!player.isAlive()){
+            gameBoard.remove(player);
+        }
     }
     private void checkCollision(){
         for(JComponent component: mapObjects){
@@ -108,16 +125,9 @@ public class Game extends JFrame implements KeyListener {
             ((MapObject.Block) mapObject).playerCollided(player);
         }
     }
-
-    private JPanel gameBoard(){
-        JPanel panel = new JPanel(null);
-        //panel.setBackground(Color.red);
-        return panel;
-    }
-    private JPanel pauseMenu(){
+    private void showPauseMenu(){
         JPanel panel = new JPanel();
         panel.setBackground(Color.black);
-        return panel;
     }
     private WindowAdapter adapter(){
         return new WindowAdapter() {
@@ -208,7 +218,7 @@ public class Game extends JFrame implements KeyListener {
         return getDebugState;
     }
     private void unLoadMap(){
-        gameBoard().removeAll();
+        gameBoard.removeAll();
         initUI();
     }
     private void loadMap(String fileName){

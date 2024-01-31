@@ -34,7 +34,7 @@ public class MapObject extends JPanel {
         if (containsNumbers(xPos) && containsNumbers(yPos)) {
             setBounds(Integer.parseInt(xPos), Integer.parseInt(yPos), sizeX, sizeY);
             if (debug) {
-                printColor("cyan", getObjectName() + " contained no letters");
+                printColor(getObjectName() + " contained no letters");
             }
         } else {
             int newXPos = switch (xPos) {
@@ -51,7 +51,7 @@ public class MapObject extends JPanel {
             };
             setBounds(newXPos, newYPos, sizeX, sizeY);
             if (debug) {
-                printColor("cyan", getObjectName() + " contained letters");
+                printColor(getObjectName() + " contained letters");
             }
         }
     }
@@ -64,10 +64,28 @@ public class MapObject extends JPanel {
         return Color.black;
     }
 
-    private void printColor(String cyan, String s) {
+    private void printColor(String s) {
         System.out.println(s);
     }
-
+    public static class Block extends MapObject{
+        private final int blockNum;
+        public Block(String fileName, JFrame frame, int blockNum, boolean debug) {
+            super(fileName, frame, debug);
+            this.blockNum = blockNum;
+        }
+        @Override
+        protected String getObjectName(){
+            return "block1";
+        }
+        @Override
+        protected Color getBackgroundColor() {
+            return Color.yellow;
+        }
+        public void playerCollided(Player player) {
+            player.setIsAlive(false);
+            player.setBounds(-100,-100,0,0);
+        }
+    }
     public static class SpawnPoint extends MapObject {
         public SpawnPoint(String fileName, JFrame frame, boolean debug) {
             super(fileName, frame, debug);
@@ -91,17 +109,18 @@ public class MapObject extends JPanel {
             super(fileName, frame, debug);
         }
 
+        @Override
+        protected String getObjectName(){
+            return "goal";
+        }
+        @Override
+        protected Color getBackgroundColor() {
+            return Color.red;
+        }
         public void reachedGoal() {
-        }
-    }
-    public static class Block extends MapObject{
-        public Block(String fileName, JFrame frame, boolean debug) {
-            super(fileName, frame, debug);
-        }
-
-        public void playerCollided(Player player) {
-            player.setIsAlive(false);
-            player.setBounds(-100,-100,0,0);
+            if(debug) {
+                System.out.println("Reached goal");
+            }
         }
     }
 }
