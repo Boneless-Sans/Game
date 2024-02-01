@@ -1,8 +1,10 @@
 package com.boneless.game;
 
+import com.boneless.game.menus.MainMenu;
 import com.boneless.game.util.MapObject;
 import com.boneless.game.util.AudioPlayer;
 import com.boneless.game.util.JsonFile;
+import com.boneless.game.util.Print;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -13,6 +15,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.security.Key;
 import java.util.*;
 import java.util.List;
 
@@ -21,6 +24,8 @@ import static com.boneless.game.util.Print.*;
 public class Game extends JFrame implements KeyListener {
     private static boolean getDebugState;
     private boolean debug = false;
+    private final boolean doCustomMap;
+    private boolean gamePaused = false;
     private int mapNum;
     private final List<JComponent> mapObjects = new ArrayList<>();
     private final String mapName;
@@ -33,6 +38,7 @@ public class Game extends JFrame implements KeyListener {
         }
         this.mapNum = mapNum;
         mapName = "level" + mapNum;
+        doCustomMap = false;
         initUI();
         gameLoop();
     }
@@ -40,8 +46,8 @@ public class Game extends JFrame implements KeyListener {
         if(Objects.equals(inDebug, "dev")){
             this.debug = true;
         }
-        doCustom
         this.mapName = mapName;
+        doCustomMap = true;
         initUI();
         gameLoop();
     }
@@ -73,6 +79,9 @@ public class Game extends JFrame implements KeyListener {
         gameBoard.add(point);
         gameBoard.add(goal);
         setVisible(true);
+    }
+    private void respawnPlayer(){
+
     }
     //Main game loop, for checking things at all times
     private void gameLoop(){
@@ -125,10 +134,6 @@ public class Game extends JFrame implements KeyListener {
             ((MapObject.Block) mapObject).playerCollided(player);
         }
     }
-    private void showPauseMenu(){
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.black);
-    }
     private WindowAdapter adapter(){
         return new WindowAdapter() {
             @Override
@@ -161,7 +166,10 @@ public class Game extends JFrame implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         if(String.valueOf(e.getKeyChar()).equals(parseKeyStrokeInput("pause"))){
-            System.exit(0);
+            if(!gamePaused) {
+                add(new PauseMenu(this));
+                gamePaused = true;
+            }
         }
         if(e.getKeyChar() == 'r' && debug){
             dispose();
@@ -176,7 +184,7 @@ public class Game extends JFrame implements KeyListener {
         String direction = getDirectionKey(e);
 
         // Add the direction to the set of pressed keys
-        if (direction != null) {
+        if (direction != null && !gamePaused) {
             pressedKeys.add(direction);
 
             // Call the move method with the updated set of pressed keys
@@ -223,5 +231,31 @@ public class Game extends JFrame implements KeyListener {
     }
     private void loadMap(String fileName){
 
+    }
+    private class PauseMenu extends JPanel implements KeyListener {
+        private final JFrame frame;
+        public PauseMenu(JFrame frame){
+            this.frame = frame;
+            if(debug){
+                printDebug("Paused");
+            }
+            initUI();
+        }
+        private void initUI(){
+            setBackground(Color.BLACK);
+            setBounds(0,0,frame.getWidth(), frame.getHeight());
+            addKeyListener(this);
+        }
+        @Override
+        public void keyTyped(KeyEvent e) {
+            if(String.valueOf(e.getKeyChar()).equals(parseKeyStrokeInput("Esc"))){
+                Print.print("unpause");
+            }
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {}
+        @Override
+        public void keyReleased(KeyEvent e) {}
     }
 }
