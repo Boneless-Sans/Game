@@ -1,6 +1,7 @@
 package com.boneless.game;
 
 import com.boneless.game.menus.MainMenu;
+import com.boneless.game.util.JsonFile;
 
 import java.util.Objects;
 
@@ -11,6 +12,7 @@ public class Launcher {
     public static void main(String[] args) {
         //run game
         print("Launching!");
+        System.out.println(JsonFile.countBlocks("maps/testMap.json","object","blocks"));
         String defaultArg = "run";
         String arg = (args != null && args.length > 0) ? args[0] : defaultArg;
         if(!Objects.equals(arg, "dev")){

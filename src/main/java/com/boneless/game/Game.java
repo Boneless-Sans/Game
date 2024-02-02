@@ -1,10 +1,7 @@
 package com.boneless.game;
 
 import com.boneless.game.menus.MainMenu;
-import com.boneless.game.util.MapObject;
-import com.boneless.game.util.AudioPlayer;
-import com.boneless.game.util.JsonFile;
-import com.boneless.game.util.Print;
+import com.boneless.game.util.*;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -64,7 +61,8 @@ public class Game extends JFrame implements KeyListener {
 
         MapObject.SpawnPoint point;
         MapObject.Goal goal;
-        gameBoard.add(new MapObject.Block(mapName, this, 1, debug));
+        gameBoard.add(new Block(mapName, this, 1, debug));
+        gameBoard.add(new Block(mapName, this, 1, debug));
 
         point = doCustomMap ? new MapObject.SpawnPoint(mapName, this, debug) :
                 new MapObject.SpawnPoint("level" + mapNum, this, debug);
@@ -130,8 +128,8 @@ public class Game extends JFrame implements KeyListener {
     private void handleCollision(MapObject mapObject) {
         if (mapObject instanceof MapObject.Goal) {
             ((MapObject.Goal) mapObject).reachedGoal();
-        } else if (mapObject instanceof MapObject.Block) {
-            ((MapObject.Block) mapObject).playerCollided(player);
+        } else if (mapObject instanceof Block) {
+            ((Block) mapObject).playerCollided(player);
         }
     }
     private WindowAdapter adapter(){
@@ -166,9 +164,11 @@ public class Game extends JFrame implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         if(String.valueOf(e.getKeyChar()).equals(parseKeyStrokeInput("pause"))){
-            if(!gamePaused) {
+            if(!gamePaused && !debug) {
                 add(new PauseMenu(this));
                 gamePaused = true;
+            }else if(debug){
+                System.exit(0);
             }
         }
         if(e.getKeyChar() == 'r' && debug){

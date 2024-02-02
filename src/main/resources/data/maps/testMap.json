@@ -19,7 +19,21 @@
       "sizeX": "100",
       "sizeY": "100"
     },
-    "block1":{
+    "blocks": {
+      "block1": {
+        "x": "l",
+        "y": "t",
+        "sizeX": "150",
+        "sizeY": "200"
+      },
+      "block2": {
+        "x": "b",
+        "y": "t",
+        "sizeX": "150",
+        "sizeY": "200"
+      }
+    },
+    "block1": {
       "x": "l",
       "y": "t",
       "sizeX": "150",

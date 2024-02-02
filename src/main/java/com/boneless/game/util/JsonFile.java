@@ -382,4 +382,29 @@ public class JsonFile {
         }
         return null;
     }
+    public static int countBlocks(String mapName, String objectKey, String blockKey) {
+        try (Reader reader = new FileReader(getFilePath(mapName))) {
+            JSONTokener tokener = new JSONTokener(reader);
+            JSONObject jsonObject = new JSONObject(tokener);
+
+            if (jsonObject.has(objectKey)) {
+                JSONObject object = jsonObject.getJSONObject(objectKey);
+
+                if (object.has(blockKey)) {
+                    JSONObject blocks = object.getJSONObject(blockKey);
+                    return blocks.length();
+                } else {
+                    System.out.println("No '" + blockKey + "' object found under '" + objectKey + "'.");
+                }
+            } else {
+                System.out.println("No '" + objectKey + "' object found in the map JSON.");
+            }
+
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
 }
