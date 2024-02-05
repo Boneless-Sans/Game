@@ -1,4 +1,4 @@
-package com.boneless.game.util;
+package com.boneless.game.mapObjects;
 
 import com.boneless.game.Player;
 
@@ -6,24 +6,17 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Block extends MapObject{
-    private final int blockNum;
+
     public Block(String fileName, JFrame frame, int blockNum, boolean debug) {
-        super(fileName, frame, debug);
-        this.blockNum = blockNum;
-        initMapObject();
+        super(fileName, frame, debug, blockNum);
     }
     @Override
     protected String getObjectName(){
-        System.out.println("blockNum: " + blockNum);
-        return "block" + blockNum;
+        return "block";
     }
     @Override
     protected Color getBackgroundColor() {
         return Color.yellow;
-    }
-    @Override
-    protected void initMapObject(){
-        System.out.println("something");
     }
     public void playerCollided(Player player) {
         player.setIsAlive(false);

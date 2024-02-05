@@ -4,7 +4,7 @@
     "sizeX": "default",
     "sizeY": "default"
   },
-  "object": {
+  "objects": {
     "comment": "map objects should have 4 params, same as setBounds, as it uses that. for corner snapping",
     "comment2": "set to desired corner, or middle (m) (topLeft: x:l y: t, bottomLeft: x: l  y: m, etc.",
     "spawn": {
@@ -27,8 +27,8 @@
         "sizeY": "200"
       },
       "block2": {
-        "x": "b",
-        "y": "t",
+        "x": "l",
+        "y": "b",
         "sizeX": "150",
         "sizeY": "200"
       }

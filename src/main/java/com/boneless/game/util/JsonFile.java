@@ -392,7 +392,7 @@ public class JsonFile {
 
                 if (object.has(blockKey)) {
                     JSONObject blocks = object.getJSONObject(blockKey);
-                    return blocks.length();
+                    return blocks.length(); // This returns the number of keys in the blocks object
                 } else {
                     System.out.println("No '" + blockKey + "' object found under '" + objectKey + "'.");
                 }
@@ -406,5 +406,4 @@ public class JsonFile {
 
         return 0;
     }
-
 }

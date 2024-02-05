@@ -1,6 +1,7 @@
 package com.boneless.game;
 
-import com.boneless.game.menus.MainMenu;
+import com.boneless.game.mapObjects.Block;
+import com.boneless.game.mapObjects.MapObject;
 import com.boneless.game.util.*;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -12,7 +13,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
-import java.security.Key;
 import java.util.*;
 import java.util.List;
 
@@ -61,8 +61,11 @@ public class Game extends JFrame implements KeyListener {
 
         MapObject.SpawnPoint point;
         MapObject.Goal goal;
-        gameBoard.add(new Block(mapName, this, 1, debug));
-        gameBoard.add(new Block(mapName, this, 1, debug));
+        //add collision blocks
+        for(int i = 1; i < JsonFile.countBlocks("maps/" + mapName, "objects","blocks") + 1; i++){
+            System.out.println("Block Number: " + i);
+            gameBoard.add(new Block(mapName, this, i, debug));
+        }
 
         point = doCustomMap ? new MapObject.SpawnPoint(mapName, this, debug) :
                 new MapObject.SpawnPoint("level" + mapNum, this, debug);
@@ -77,9 +80,6 @@ public class Game extends JFrame implements KeyListener {
         gameBoard.add(point);
         gameBoard.add(goal);
         setVisible(true);
-    }
-    private void respawnPlayer(){
-
     }
     //Main game loop, for checking things at all times
     private void gameLoop(){
