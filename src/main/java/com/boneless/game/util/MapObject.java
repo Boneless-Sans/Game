@@ -1,7 +1,6 @@
-package com.boneless.game.mapObjects;
+package com.boneless.game.util;
 
 import com.boneless.game.Player;
-import com.boneless.game.util.JsonFile;
 
 import javax.swing.*;
 import java.awt.*;

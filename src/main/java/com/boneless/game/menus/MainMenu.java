@@ -8,15 +8,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Objects;
 
 import static com.boneless.game.util.Print.*;
 
 public class MainMenu extends JFrame{
-    private boolean debug = false;
     public MainMenu(String args){
         if(Objects.equals(args, "dev")){
-            debug = true;
             printDebug("MainMenu Skipped!");
         }
         initUI();
@@ -58,12 +57,17 @@ public class MainMenu extends JFrame{
         panel.setBackground(Color.red);
         panel.setPreferredSize(new Dimension(100,100));
 
-//        String levels = "levels.json";
-//        for(int i = 1; i < JsonFile.countBlocks(levels,"levels","maps") + 1;i++){
-//            JButton button = new JButton(JsonFile.readWithThreeKeys(levels, "levels","maps","map" + i));
-//            button.addActionListener(buttonEvent(button));
-//            panel.add(button);
-//        }
+        File dir = new File("src/main/resources/data/maps");
+        File[] files = dir.listFiles((dir1, name) -> name.toLowerCase().contains("level"));
+        assert files != null;
+        int mapNum = files.length;
+
+        for(int i = 1; i < mapNum + 1; i++){
+            JButton button = new JButton("Level " + i);
+            button.addActionListener(buttonEvent(button));
+            panel.add(button);
+        }
+
         return panel;
     }
     private JPanel spacer(int size){
@@ -74,6 +78,10 @@ public class MainMenu extends JFrame{
         return panel;
     }
     private ActionListener buttonEvent(JButton button){
-        return e -> System.out.println("Button Pressed: " + button.getText());
+        return e -> {
+            //str.matches("[0-9]+")
+          String buttonName = button.getText();
+
+        };
     }
 }

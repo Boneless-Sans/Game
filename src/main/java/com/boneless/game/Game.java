@@ -1,6 +1,6 @@
 package com.boneless.game;
 
-import com.boneless.game.mapObjects.MapObject;
+import com.boneless.game.util.MapObject;
 import com.boneless.game.util.*;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -19,11 +19,10 @@ import static com.boneless.game.util.Print.*;
 
 public class Game extends JFrame implements KeyListener {
     private boolean runGame = true;
-    private static boolean getDebugState;
-    private boolean debug = false;
+    private final boolean debug;
     private final boolean doCustomMap;
     private boolean gamePaused = false;
-    private int mapNum = 1;
+    private int mapNum;
     private final List<JComponent> mapObjects = new ArrayList<>();
     private final String mapName;
     private Player player;
@@ -46,7 +45,6 @@ public class Game extends JFrame implements KeyListener {
     }
     //Initialize the game and frame
     private void initUI(){
-        getDebugState = debug;
         addWindowListener(adapter());
         addKeyListener(this);
         setSize(1200,900);
