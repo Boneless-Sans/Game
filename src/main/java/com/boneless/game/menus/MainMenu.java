@@ -1,17 +1,19 @@
 package com.boneless.game.menus;
 
 import com.boneless.game.Game;
+import com.boneless.game.util.JsonFile;
 import com.boneless.game.util.ScrollGridPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Objects;
 
 import static com.boneless.game.util.Print.*;
 
 public class MainMenu extends JFrame{
     private boolean debug = false;
-    private String selectedMap;
     public MainMenu(String args){
         if(Objects.equals(args, "dev")){
             debug = true;
@@ -56,19 +58,12 @@ public class MainMenu extends JFrame{
         panel.setBackground(Color.red);
         panel.setPreferredSize(new Dimension(100,100));
 
-        JButton button = new JButton();
-        button.setText("text");
-        button.addActionListener(e -> {
-            if(debug){
-                dispose();
-                new Game("dev", "testMap");
-            }else{
-                dispose();
-                new Game(null, 1);
-            }
-        });
-
-        panel.add(button);
+//        String levels = "levels.json";
+//        for(int i = 1; i < JsonFile.countBlocks(levels,"levels","maps") + 1;i++){
+//            JButton button = new JButton(JsonFile.readWithThreeKeys(levels, "levels","maps","map" + i));
+//            button.addActionListener(buttonEvent(button));
+//            panel.add(button);
+//        }
         return panel;
     }
     private JPanel spacer(int size){
@@ -77,5 +72,8 @@ public class MainMenu extends JFrame{
         panel.setBackground(new Color(0,0,0,0));
         panel.setOpaque(true);
         return panel;
+    }
+    private ActionListener buttonEvent(JButton button){
+        return e -> System.out.println("Button Pressed: " + button.getText());
     }
 }

@@ -1,3 +1,43 @@
 {
-
+  "data": {
+    "name": "Level 1",
+    "sizeX": "default",
+    "sizeY": "default"
+  },
+  "objects": {
+    "comment": "map objects should have 4 params, same as setBounds, as it uses that. for corner snapping",
+    "comment2": "set to desired corner, or middle (m) (topLeft: x:l y: t, bottomLeft: x: l  y: m, etc.",
+    "spawn": {
+      "x": "l",
+      "y": "b",
+      "sizeX": "100",
+      "sizeY": "100"
+    },
+    "goal": {
+      "x": "r",
+      "y": "b",
+      "sizeX": "100",
+      "sizeY": "100"
+    },
+    "blocks": {
+      "block1": {
+        "x": "l",
+        "y": "t",
+        "sizeX": "100",
+        "sizeY": "100"
+      },
+      "block2": {
+        "x": "m",
+        "y": "t",
+        "sizeX": "100",
+        "sizeY": "100"
+      },
+      "block3": {
+        "x": "r",
+        "y": "t",
+        "sizeX": "100",
+        "sizeY": "100"
+      }
+    }
+  }
 }

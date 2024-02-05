@@ -73,13 +73,13 @@ public class Game extends JFrame implements KeyListener {
 
         //add collision blocks
         if(doCustomMap){
-            for(int i = 1; i < JsonFile.countBlocks(mapName, "objects","blocks") + 1; i++){
+            for(int i = 1; i < JsonFile.countBlocks("maps/" + mapName, "objects","blocks") + 1; i++){
                 JPanel blockPanel = new MapObject.Block(mapName, this, i, debug);
                 gameBoard.add(blockPanel);
                 mapObjects.add(blockPanel);
             }
         }else{
-            for(int i = 1; i < JsonFile.countBlocks(map,"objects","blocks") + 1; i++){
+            for(int i = 1; i < JsonFile.countBlocks("maps/" + map,"objects","blocks") + 1; i++){
                 JPanel blockPanel = new MapObject.Block(mapName, this, i, debug);
                 gameBoard.add(blockPanel);
                 mapObjects.add(blockPanel);
@@ -147,12 +147,11 @@ public class Game extends JFrame implements KeyListener {
     }
     //Methods
     private void reload(){
-        //Unload
         dispose();
         if(doCustomMap) {
-            new Game(debug ? "dev" : null, mapName);
+            new Game(debug ? "dev" : null, "testMap");
         } else{
-            new Game(debug ? "dev" : null, mapNum);
+            new Game(debug ? "dev" : null, 1);
         }
     }
     //Player input
