@@ -23,21 +23,21 @@
       "block1": {
         "x": "l",
         "y": "t",
-        "sizeX": "150",
-        "sizeY": "200"
+        "sizeX": "100",
+        "sizeY": "100"
       },
       "block2": {
         "x": "l",
         "y": "b",
-        "sizeX": "150",
-        "sizeY": "200"
+        "sizeX": "100",
+        "sizeY": "100"
+      },
+      "block3": {
+        "x": "l",
+        "y": "m",
+        "sizeX": "100",
+        "sizeY": "100"
       }
-    },
-    "block1": {
-      "x": "l",
-      "y": "t",
-      "sizeX": "150",
-      "sizeY": "200"
     }
   }
 }

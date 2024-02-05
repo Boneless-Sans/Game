@@ -61,10 +61,10 @@ public class MainMenu extends JFrame{
         button.addActionListener(e -> {
             if(debug){
                 dispose();
-                new Game("dev", "testMap.json");
+                new Game("dev", "testMap");
             }else{
                 dispose();
-                new Game(null, selectedMap);
+                new Game(null, 1);
             }
         });
 

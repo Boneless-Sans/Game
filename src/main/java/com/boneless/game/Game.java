@@ -1,6 +1,5 @@
 package com.boneless.game;
 
-import com.boneless.game.mapObjects.Block;
 import com.boneless.game.mapObjects.MapObject;
 import com.boneless.game.util.*;
 
@@ -19,35 +18,33 @@ import java.util.List;
 import static com.boneless.game.util.Print.*;
 
 public class Game extends JFrame implements KeyListener {
+    private boolean runGame = true;
     private static boolean getDebugState;
     private boolean debug = false;
     private final boolean doCustomMap;
     private boolean gamePaused = false;
-    private int mapNum;
+    private int mapNum = 1;
     private final List<JComponent> mapObjects = new ArrayList<>();
     private final String mapName;
     private Player player;
     private JPanel gameBoard;
-
+    //constructors
     public Game(String inDebug, int mapNum){
-        if(Objects.equals(inDebug, "dev")){
-            this.debug = true;
-        }
+        debug = Objects.equals(inDebug, "dev");
         this.mapNum = mapNum;
-        mapName = "level" + mapNum;
+        mapName = "level" + mapNum + ".json";
         doCustomMap = false;
         initUI();
         gameLoop();
     }
     public Game(String inDebug, String mapName){
-        if(Objects.equals(inDebug, "dev")){
-            this.debug = true;
-        }
-        this.mapName = mapName;
+        debug = Objects.equals(inDebug, "dev");
+        this.mapName = mapName + ".json";
         doCustomMap = true;
         initUI();
         gameLoop();
     }
+    //Initialize the game and frame
     private void initUI(){
         getDebugState = debug;
         addWindowListener(adapter());
@@ -55,28 +52,39 @@ public class Game extends JFrame implements KeyListener {
         setSize(1200,900);
         setLocationRelativeTo(null);
         setResizable(false);
+        setTitle("Game");
+        setIconImage(new ImageIcon("src/main/resources/assets/textures/player.png").getImage());
 
         gameBoard = new JPanel(null);
         add(gameBoard);
 
         MapObject.SpawnPoint point;
         MapObject.Goal goal;
-        //add collision blocks
-        for(int i = 1; i < JsonFile.countBlocks("maps/" + mapName, "objects","blocks") + 1; i++){
-            System.out.println("Block Number: " + i);
-            gameBoard.add(new Block(mapName, this, i, debug));
-        }
-
+        String map = doCustomMap ? "level" + mapNum + ".json" : mapName;
         point = doCustomMap ? new MapObject.SpawnPoint(mapName, this, debug) :
-                new MapObject.SpawnPoint("level" + mapNum, this, debug);
+                new MapObject.SpawnPoint(map, this, debug);
         goal = doCustomMap ? new MapObject.Goal(mapName, this, debug) :
-                new MapObject.Goal("level" + mapNum, this, debug);
+                new MapObject.Goal(map, this, debug);
         mapObjects.add(goal);
 
         player = new Player(this, point);
         gameBoard.add(player);
         player.update();
 
+        //add collision blocks
+        if(doCustomMap){
+            for(int i = 1; i < JsonFile.countBlocks(mapName, "objects","blocks") + 1; i++){
+                JPanel blockPanel = new MapObject.Block(mapName, this, i, debug);
+                gameBoard.add(blockPanel);
+                mapObjects.add(blockPanel);
+            }
+        }else{
+            for(int i = 1; i < JsonFile.countBlocks(map,"objects","blocks") + 1; i++){
+                JPanel blockPanel = new MapObject.Block(mapName, this, i, debug);
+                gameBoard.add(blockPanel);
+                mapObjects.add(blockPanel);
+            }
+        }
         gameBoard.add(point);
         gameBoard.add(goal);
         setVisible(true);
@@ -84,7 +92,7 @@ public class Game extends JFrame implements KeyListener {
     //Main game loop, for checking things at all times
     private void gameLoop(){
         Thread gameLoop = new Thread(() -> {
-            while (true) {
+            while (runGame) {
                 updateTick(); // Update game state
                 checkCollision();
                 try {
@@ -93,6 +101,10 @@ public class Game extends JFrame implements KeyListener {
                     e.printStackTrace();
                 }
             }
+            if(!runGame && debug){
+                System.out.println("Game has ended");
+                reload();
+            }
         });
         gameLoop.start();
     }
@@ -100,6 +112,7 @@ public class Game extends JFrame implements KeyListener {
         player.update();
         if(!player.isAlive()){
             gameBoard.remove(player);
+            runGame = false;
         }
     }
     private void checkCollision(){
@@ -128,10 +141,21 @@ public class Game extends JFrame implements KeyListener {
     private void handleCollision(MapObject mapObject) {
         if (mapObject instanceof MapObject.Goal) {
             ((MapObject.Goal) mapObject).reachedGoal();
-        } else if (mapObject instanceof Block) {
-            ((Block) mapObject).playerCollided(player);
+        } else if (mapObject instanceof MapObject.Block) {
+            ((MapObject.Block) mapObject).playerCollided(player);
         }
     }
+    //Methods
+    private void reload(){
+        //Unload
+        dispose();
+        if(doCustomMap) {
+            new Game(debug ? "dev" : null, mapName);
+        } else{
+            new Game(debug ? "dev" : null, mapNum);
+        }
+    }
+    //Player input
     private WindowAdapter adapter(){
         return new WindowAdapter() {
             @Override
@@ -150,7 +174,6 @@ public class Game extends JFrame implements KeyListener {
             }
         };
     }
-    //Player input
     private String parseKeyStrokeInput(String binding){
         String key = JsonFile.read("settings.json","keybindings", binding);
         return switch (key){
@@ -161,6 +184,7 @@ public class Game extends JFrame implements KeyListener {
             default -> key.toLowerCase();
         };
     }
+    //Key Events
     @Override
     public void keyTyped(KeyEvent e) {
         if(String.valueOf(e.getKeyChar()).equals(parseKeyStrokeInput("pause"))){
@@ -205,6 +229,7 @@ public class Game extends JFrame implements KeyListener {
             player.move(pressedKeys);
         }
     }
+    //Get Vars
     private String getDirectionKey(KeyEvent e){
         String upKey = parseKeyStrokeInput("up");
         String downKey = parseKeyStrokeInput("down");
@@ -222,16 +247,7 @@ public class Game extends JFrame implements KeyListener {
             return String.valueOf(e);
         }
     }
-    public static boolean getDebugState(){
-        return getDebugState;
-    }
-    private void unLoadMap(){
-        gameBoard.removeAll();
-        initUI();
-    }
-    private void loadMap(String fileName){
-
-    }
+    //Extra Classes
     private class PauseMenu extends JPanel implements KeyListener {
         private final JFrame frame;
         public PauseMenu(JFrame frame){

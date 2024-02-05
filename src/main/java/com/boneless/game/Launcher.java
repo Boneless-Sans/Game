@@ -19,7 +19,7 @@ public class Launcher {
             printDebug("Debugging Enabled!");
             new MainMenu(arg);
         }else{
-            new Game(arg, "testMap.json");
+            new Game(arg, "testMap");
         }
     }
 }

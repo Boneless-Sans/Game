@@ -1,5 +1,6 @@
 package com.boneless.game.mapObjects;
 
+import com.boneless.game.Player;
 import com.boneless.game.util.JsonFile;
 
 import javax.swing.*;
@@ -57,22 +58,27 @@ public abstract class MapObject extends JPanel {
         if (containsNumbers(xPos) && containsNumbers(yPos)) {
             setBounds(Integer.parseInt(xPos), Integer.parseInt(yPos), sizeX, sizeY);
         } else {
-            int newXPos = switch (xPos) {
-                case "l" -> 0;
-                case "r" -> frame.getWidth() - sizeX - 10;
-                case "m" -> (frame.getWidth() / 2) - 40;
-                default -> Integer.parseInt(xPos);
-            };
-            int newYPos = switch (yPos) {
-                case "t" -> 0;
-                case "b" -> frame.getHeight() - sizeY - 35;
-                case "m" -> (frame.getHeight() / 2) - 40;
-                default -> Integer.parseInt(yPos);
-            };
+            int newXPos = getNewX(xPos);
+            int newYPos = getNewY(yPos);
             setBounds(newXPos, newYPos, sizeX, sizeY);
         }
     }
-
+    private int getNewX(String xPos){
+        return switch (xPos) {
+            case "l" -> 0;
+            case "r" -> frame.getWidth() - sizeX - 10;
+            case "m" -> (frame.getWidth() / 2) - sizeX;
+            default -> Integer.parseInt(xPos);
+        };
+    }
+    private int getNewY(String yPos){
+        return switch (yPos) {
+            case "t" -> 0;
+            case "b" -> frame.getHeight() - sizeY - 35;
+            case "m" -> (frame.getHeight() / 2) - sizeY;
+            default -> Integer.parseInt(yPos);
+        };
+    }
     protected String getObjectName() {
         return "Insert Name Here";
     }
@@ -116,6 +122,24 @@ public abstract class MapObject extends JPanel {
             if(debug) {
                 System.out.println("Reached goal");
             }
+        }
+    }
+    public static class Block extends MapObject{
+
+        public Block(String fileName, JFrame frame, int blockNum, boolean debug) {
+            super(fileName, frame, debug, blockNum);
+        }
+        @Override
+        protected String getObjectName(){
+            return "block";
+        }
+        @Override
+        protected Color getBackgroundColor() {
+            return Color.yellow;
+        }
+        public void playerCollided(Player player) {
+            System.out.println("Player died");
+            player.setIsAlive(false);
         }
     }
 }
