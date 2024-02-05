@@ -5,36 +5,44 @@
     "sizeY": "default"
   },
   "objects": {
-    "comment": "map objects should have 4 params, same as setBounds, as it uses that. for corner snapping",
-    "comment2": "set to desired corner, or middle (m) (topLeft: x:l y: t, bottomLeft: x: l  y: m, etc.",
+    "comment1": "map objects should have 4 params, same as setBounds, as it uses that. for corner snapping",
+    "comment1.5": "set to desired corner, or middle (m) (topLeft: x:l y: t, bottomLeft: x: l  y: m, etc.",
+    "comment2": "var a is for anchoring the panel, so its not always centered and allows for better placements if needed",
+    "comment2.5": "use n for default !!WIP!!",
+    "comment3": "For sizes, use any int value or use s for the entire size of the given dimension !!WIP!!",
     "spawn": {
       "x": "m",
       "y": "b",
+      "a": "tl",
       "sizeX": "100",
       "sizeY": "100"
     },
     "goal": {
       "x": "r",
       "y": "t",
+      "a": "tl",
       "sizeX": "100",
       "sizeY": "100"
     },
     "blocks": {
       "block1": {
-        "x": "l",
-        "y": "t",
+        "x": "m",
+        "y": "m",
+        "a": "tl",
         "sizeX": "100",
-        "sizeY": "100"
+        "sizeY": "200"
       },
       "block2": {
-        "x": "l",
-        "y": "b",
+        "x": "r",
+        "y": "m",
+        "a": "tl",
         "sizeX": "100",
         "sizeY": "100"
       },
       "block3": {
         "x": "l",
         "y": "m",
+        "a": "tl",
         "sizeX": "100",
         "sizeY": "100"
       }
