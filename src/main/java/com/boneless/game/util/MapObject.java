@@ -32,6 +32,7 @@ public abstract class MapObject extends JPanel {
         int newSizeX = getNewSizeX(sizeX);
         int newSizeY = getNewSizeY(sizeY);
         setBounds(newXPos, newYPos, newSizeX, newSizeY);
+        setBackground(getBackgroundColor());
     }
     public MapObject(String fileName, JFrame frame, boolean debug, int blockNum) {
         this.debug = debug;

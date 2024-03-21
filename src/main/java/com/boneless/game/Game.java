@@ -17,6 +17,7 @@ import java.util.List;
 
 import static com.boneless.game.util.Print.*;
 
+@SuppressWarnings({"BusyWait", "CallToPrintStackTrace"})
 public class Game extends JFrame implements KeyListener {
     private boolean runGame = true;
     private final boolean debug;
@@ -186,10 +187,10 @@ public class Game extends JFrame implements KeyListener {
     public void keyTyped(KeyEvent e) {
         if(String.valueOf(e.getKeyChar()).equals(parseKeyStrokeInput("pause"))){
             if(!gamePaused && !debug) {
-                add(new PauseMenu(this));
-                gamePaused = true;
+                //add(new PauseMenu(this));
+                //gamePaused = true;
             }else if(debug){
-                System.exit(0);
+                //System.exit(0);
             }
         }
         if(e.getKeyChar() == 'r' && debug){
@@ -197,6 +198,7 @@ public class Game extends JFrame implements KeyListener {
             printColor("blue","RELOADING!");
             new Game("dev", mapName);
         }
+
     }
     private final Set<String> pressedKeys = new HashSet<>();
     @Override

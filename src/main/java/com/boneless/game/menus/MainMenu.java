@@ -21,7 +21,7 @@ public class MainMenu extends JFrame{
         initUI();
     }
     private void initUI(){
-        setSize(720,720);
+        setSize(1200,720);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Game?");

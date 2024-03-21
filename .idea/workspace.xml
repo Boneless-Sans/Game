@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16f91e44-d3bb-475c-b5be-6f8730b74aaf" name="Changes" comment="working on menu loading button">
+    <list default="true" id="16f91e44-d3bb-475c-b5be-6f8730b74aaf" name="Changes" comment="yippe mainmenu is (almost) working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Dev.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Dev.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/menus/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/menus/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/MapObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/MapObject.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +86,7 @@
       <recent name="com.boneless.game.util" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Run With Debugging">
     <configuration name="Run With Debugging" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.boneless.game.Launcher" />
       <module name="Game.main" />
