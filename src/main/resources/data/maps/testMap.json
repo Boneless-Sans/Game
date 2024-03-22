@@ -2,7 +2,8 @@
   "data": {
     "name": "Level 1",
     "sizeX": "default",
-    "sizeY": "default"
+    "sizeY": "default",
+    "gravity": "1"
   },
   "objects": {
     "comment1": "map objects should have 4 params, same as setBounds, as it uses that. for corner snapping",

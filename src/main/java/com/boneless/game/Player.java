@@ -12,7 +12,9 @@ public class Player extends JPanel {
     //player values
     private double velocityX = 0.0;
     private double velocityY = 0.0;
+    private boolean onGround;
     public Player(JFrame frame, JPanel spawnPanel){
+        onGround = false;
         int playerWidth = 50;
         int playerHeight = 50;
 
@@ -112,6 +114,7 @@ public class Player extends JPanel {
     public boolean isAlive(){
         return isAlive;
     }
+    public boolean isOnGround(){return onGround;}
     public void setIsAlive(boolean isAlive){
         this.isAlive = isAlive;
     }

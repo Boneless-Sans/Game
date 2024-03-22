@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16f91e44-d3bb-475c-b5be-6f8730b74aaf" name="Changes" comment="yippe mainmenu is (almost) working">
+    <list default="true" id="16f91e44-d3bb-475c-b5be-6f8730b74aaf" name="Changes" comment="fixing color issues">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/menus/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/menus/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/MapObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boneless/game/util/MapObject.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707161700057</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fixing color issues">
+      <option name="closed" value="true" />
+      <created>1711055952011</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711055952011</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -203,6 +208,7 @@
     <MESSAGE value="dfghj" />
     <MESSAGE value="sdfghj" />
     <MESSAGE value="yippe tings are working" />
-    <option name="LAST_COMMIT_MESSAGE" value="yippe tings are working" />
+    <MESSAGE value="fixing color issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing color issues" />
   </component>
 </project>

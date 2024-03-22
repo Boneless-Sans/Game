@@ -50,7 +50,7 @@ public abstract class MapObject extends JPanel {
         int newSizeX = getNewSizeX(sizeX);
         int newSizeY = getNewSizeY(sizeY);
         setBounds(newXPos, newYPos, newSizeX, newSizeY);
-
+        setBackground(getBackgroundColor());
     }
     private int getNewX(String xPos){
         return switch (xPos) {
